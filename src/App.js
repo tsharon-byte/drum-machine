@@ -39,7 +39,7 @@ function DrumPad(props) {
 
 function Display(props) {
     const elem = audioClips.find((item) => {
-        return item.name == props.clipId;
+        return item.name === props.clipId;
     });
     const descr = elem.description;
     return <div id="display">Listen: {descr}</div>;
@@ -48,7 +48,7 @@ function Display(props) {
 function Container(props) {
     const drumItems = audioClips.map((item) =>
         <DrumPad key={item.name} name={item.name} src={item.src}/>);
-    console.log(drumItems)
+    console.log(drumItems);
     return <div id="drum-machine" onClick={props.onClick}>
         {drumItems}
         <Display clipId={props.clipId}/>
@@ -75,8 +75,8 @@ class App extends React.Component {
 
     handleKeyPress(event) {
         const keyName = event.key.toUpperCase();
-        if (undefined != audioClips.find((item) => {
-            if (item.name == keyName) {
+        if (undefined !== audioClips.find((item) => {
+            if (item.name === keyName) {
                 return true;
             }
             return false;
